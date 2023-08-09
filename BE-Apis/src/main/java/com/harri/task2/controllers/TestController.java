@@ -12,6 +12,11 @@ public class TestController {
 
     private final CountryService countryService;
 
+    @GetMapping
+    public ResponseEntity<?> welcomePage(){
+        return ResponseEntity.ok("Welcome to heroku!");
+    }
+
     @GetMapping("/continents")
     public ResponseEntity<?> getContinentsByCountry(@RequestBody List<String> countries){
         List<String> results = countryService.getContinentsByCountry(countries);
