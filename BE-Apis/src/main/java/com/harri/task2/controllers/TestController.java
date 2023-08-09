@@ -16,23 +16,22 @@ public class TestController {
     public ResponseEntity<?> welcomePage(){
         return ResponseEntity.ok("Welcome to heroku!");
     }
+    @GetMapping("/continents")
+    public ResponseEntity<?> getContinentsByCountry(@RequestBody List<String> countries){
+        List<String> results = countryService.getContinentsByCountry(countries);
+        return ResponseEntity.ok(results);
+    }
 
-//    @GetMapping("/continents")
-//    public ResponseEntity<?> getContinentsByCountry(@RequestBody List<String> countries){
-//        List<String> results = countryService.getContinentsByCountry(countries);
-//        return ResponseEntity.ok(results);
-//    }
-//
-//    @GetMapping("/continent/{country}")
-//    public ResponseEntity<?> getContinentByCountry(@PathVariable String country){
-//        String continent = countryService.getContinentByCountry(country);
-//        return ResponseEntity.ok(continent);
-//    }
-//    @GetMapping("/countries")
-//    public ResponseEntity<?> getCountries(
-//            @RequestParam(name = "page", defaultValue = "0") int page,
-//            @RequestParam(name = "size", defaultValue = "10") int size) {
-//
-//        return ResponseEntity.ok(countryService.getCountries(page, size));
-//    }
+    @GetMapping("/continent/{country}")
+    public ResponseEntity<?> getContinentByCountry(@PathVariable String country){
+        String continent = countryService.getContinentByCountry(country);
+        return ResponseEntity.ok(continent);
+    }
+    @GetMapping("/countries")
+    public ResponseEntity<?> getCountries(
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "10") int size) {
+
+        return ResponseEntity.ok(countryService.getCountries(page, size));
+    }
 }
