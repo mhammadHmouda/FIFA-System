@@ -19,12 +19,12 @@ public class CountryService {
     private final CountryRepository countryRepository;
 
 
-    public List<Tuple2<String, String>> getContinentsByCountry(List<String> countries) {
-        List<Tuple2<String, String>> results = new ArrayList<>();
+    public List<String> getContinentsByCountry(List<String> countries) {
+        List<String> results = new ArrayList<>();
 
         countries.forEach(countryName -> {
             Country country = countryRepository.findByName(countryName);
-            results.add(new Tuple2<>(countryName, country.getContinent().getName()));
+            results.add(countryName + ": " + country.getContinent().getName());
         });
 
         return results;

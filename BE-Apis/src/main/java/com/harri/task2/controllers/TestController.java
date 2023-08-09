@@ -15,7 +15,7 @@ public class TestController {
 
     @GetMapping("/continents")
     public ResponseEntity<?> getContinentsByCountry(@RequestBody List<String> countries){
-        List<Tuple2<String, String>> results = countryService.getContinentsByCountry(countries);
+        List<String> results = countryService.getContinentsByCountry(countries);
         return ResponseEntity.ok(results);
     }
 
