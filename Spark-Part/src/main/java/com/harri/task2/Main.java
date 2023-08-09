@@ -22,13 +22,11 @@ public class Main {
                 .master("local")
                 .getOrCreate();
 
-        String jdbcUrl = "jdbc:mysql://localhost:3306/fifa?allowPublicKeyRetrieval=true";
-        String user = "root";
-        String password = "Hamood12344321m#";
+        String jdbcUrl = System.getenv("JDBC_URL");
 
         Properties connectionProperties = new Properties();
-        connectionProperties.put("user", user);
-        connectionProperties.put("password", password);
+        connectionProperties.put("user", System.getenv("DB_USER"));
+        connectionProperties.put("password", System.getenv("DB_PASSWORD"));
 
         // Get countries data from database
         Dataset<Row> countriesDS = spark.read()
@@ -43,15 +41,14 @@ public class Main {
         // Get players data from csv file
         Dataset<Row> playersDS = spark.read()
                 .option("header", true)
-                .csv("D:\\Harri\\Training1\\FIFA-System\\Spark-Part\\src\\main\\resources\\players.csv");
+                .csv("D:\\Fifa-data\\players.csv");
 
         // Join all these datasets together
         Dataset<Row> allInfoDS = countriesDS.join(
                 continentsDS,
                 countriesDS.col("continent_code").equalTo(continentsDS.col("code"))
                 ).drop(continentsDS.col("code"))
-                .join(
-                        playersDS,
+                .join(  playersDS,
                         playersDS.col("Nationality").equalTo(countriesDS.col("c_name"))
                 ).select("Name", "Nationality", "Club", "Fifa Score", "Salary", "continent");
 
@@ -61,7 +58,7 @@ public class Main {
         // 4- Get the new updated document of players and extract the players with new salaries
         Dataset<Row> updatedSalary = spark.read()
                 .option("header", true)
-                .csv("D:\\Harri\\Training1\\FIFA-System\\Spark-Part\\src\\main\\resources\\updatedSalary.csv")
+                .csv("D:\\Fifa-data\\updatedSalary.csv")
                 .withColumnRenamed("Salary", "UpdatedSalary")
                 .drop("Nationality", "Fifa Score", "Age");
 
