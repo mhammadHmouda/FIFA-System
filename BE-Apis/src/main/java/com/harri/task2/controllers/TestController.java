@@ -4,7 +4,6 @@ import com.harri.task2.services.CountryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import scala.Tuple2;
 import java.util.List;
 
 @RestController
