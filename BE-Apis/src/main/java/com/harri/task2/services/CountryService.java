@@ -1,10 +1,7 @@
 package com.harri.task2.services;
 
-import com.harri.task2.models.Country;
+//import com.harri.task2.models.Country;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
