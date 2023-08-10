@@ -24,7 +24,7 @@ public class GetContinents {
                 .distinct().as(Encoders.STRING()).collectAsList();
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpPost httpPost = new HttpPost("http://localhost:8080/continents");
+        HttpPost httpPost = new HttpPost("https://fifa-players-f3c3763af6a2.herokuapp.com/continents");
         httpPost.setEntity(new StringEntity(new Gson().toJson(countriesName), "UTF-8"));
 
         httpPost.setHeader("Content-Type", "application/json");
