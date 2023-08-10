@@ -12,11 +12,13 @@ public class UpdateSalary {
                 .drop("Salary")
                 .withColumnRenamed("UpdatedSalary", "Salary");
 
-        results.write()
-                .option("header", true)
-                .mode("overwrite")
-                .format("csv")
-                .save("s3a://fifa-players-results/updatedSalary");
+        results.show();
+
+//        results.write()
+//                .option("header", true)
+//                .mode("overwrite")
+//                .format("csv")
+//                .save("s3a://fifa-players-results/updatedSalary");
 
     }
 }
