@@ -16,7 +16,7 @@ public class CountryService {
 
     private final CountryRepository countryRepository;
 
-
+    // Take a list of country and return a list of country and the continents of this country
     public List<String> getContinentsByCountry(List<String> countries) {
         List<String> results = new ArrayList<>();
 
@@ -28,6 +28,7 @@ public class CountryService {
         return results;
     }
 
+    // Take the page number and the size of this page and return a list of this countries
     public List<Country> getCountries(int page, int size){
         Pageable pageable = PageRequest.of(page, size);
         Page<Country> countries = countryRepository.findAll(pageable);
@@ -35,6 +36,7 @@ public class CountryService {
         return countries.getContent();
     }
 
+    // Take a country name and return the continent of this country
     public String getContinentByCountry(String country) {
         return countryRepository.findByName(country).getContinent().getName();
     }

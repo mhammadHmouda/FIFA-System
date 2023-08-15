@@ -14,10 +14,11 @@ public class UpdateSalary {
 
         results.show();
 
-//        results.write()
-//                .option("header", true)
-//                .mode("overwrite")
-//                .format("csv")
+        results.write()
+                .option("header", true)
+                .mode("overwrite")
+                .format("csv")
+                .save("D:\\Harri\\Training1\\Java Spark Train\\version\\FIFA-System\\Spark-Part\\src\\main\\resources\\outputs\\updatedSalary");
 //                .save("s3a://fifa-players-results/updatedSalary");
 
     }

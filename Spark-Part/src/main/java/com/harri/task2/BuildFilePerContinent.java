@@ -12,7 +12,8 @@ public class BuildFilePerContinent {
                 .option("header", true)
                 .format("csv")
                 .mode("overwrite")
-                .partitionBy("continent");
+                .partitionBy("continent")
+                .save("D:\\Harri\\Training1\\Java Spark Train\\version\\FIFA-System\\Spark-Part\\src\\main\\resources\\outputs\\players-per-continent");
 //                .save("s3a://fifa-players-results/players-per-continent");
 
     }

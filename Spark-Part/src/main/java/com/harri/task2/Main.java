@@ -61,8 +61,9 @@ public class Main {
                         "LIMIT 3");
         topCountries.show();
 
-//        topCountries.write().option("header", true)
-//                .mode("overwrite").format("csv")
+        topCountries.write().option("header", true)
+                .mode("overwrite").format("csv")
+                .save("D:\\Harri\\Training1\\Java Spark Train\\version\\FIFA-System\\Spark-Part\\src\\main\\resources\\outputs\\topCountries");
 //                .save("s3a://fifa-players-results/topCountries");
 
         // ***********************************************************************
@@ -77,8 +78,9 @@ public class Main {
                         "LIMIT 5");
         topClubs.show();
 
-//        topClubs.write().option("header", true)
-//                .mode("overwrite").format("csv")
+        topClubs.write().option("header", true)
+                .mode("overwrite").format("csv")
+                .save("D:\\Harri\\Training1\\Java Spark Train\\version\\FIFA-System\\Spark-Part\\src\\main\\resources\\outputs\\topClubs");
 //                .save("s3a://fifa-players-results/topClubs");
 
         // ***********************************************************************
@@ -95,8 +97,9 @@ public class Main {
 
         bestPlayersContinent.show();
 
-//        bestPlayersContinent.write().option("header", true)
-//                .mode("overwrite").format("csv")
+        bestPlayersContinent.write().option("header", true)
+                .mode("overwrite").format("csv")
+                .save("D:\\Harri\\Training1\\Java Spark Train\\version\\FIFA-System\\Spark-Part\\src\\main\\resources\\outputs\\bestContinent");
 //                .save("s3a://fifa-players-results/bestContinent");
 
         // ***********************************************************************
