@@ -1,5 +1,6 @@
 package com.harri.task2.controllers;
 
+import com.harri.task2.models.ContinentCountry;
 import com.harri.task2.services.CountryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,17 +12,15 @@ import java.util.List;
 public class TestController {
 
     private final CountryService countryService;
-
     @GetMapping
     public ResponseEntity<?> welcomePage(){
-        return ResponseEntity.ok("Welcome to heroku!");
+        return ResponseEntity.ok("Welcome to Fifa api's!");
     }
-    @GetMapping("/continents")
-    public ResponseEntity<?> getContinentsByCountry(@RequestBody List<String> countries){
-        List<String> results = countryService.getContinentsByCountry(countries);
+    @PostMapping("/continents")
+    public ResponseEntity<?> loadContinent(@RequestBody List<String> countries){
+        List<ContinentCountry> results = countryService.load(countries);
         return ResponseEntity.ok(results);
     }
-
     @GetMapping("/continent/{country}")
     public ResponseEntity<?> getContinentByCountry(@PathVariable String country){
         String continent = countryService.getContinentByCountry(country);
