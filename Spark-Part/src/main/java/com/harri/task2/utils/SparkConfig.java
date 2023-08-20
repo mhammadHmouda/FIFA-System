@@ -1,4 +1,4 @@
-package com.harri.task2;
+package com.harri.task2.utils;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.varia.NullAppender;
@@ -10,7 +10,7 @@ public class SparkConfig {
 
         return SparkSession.builder()
                 .appName("FIFA-Spark")
-                .master("local")
+                .master("local[*]")
                 .getOrCreate();
     }
 }

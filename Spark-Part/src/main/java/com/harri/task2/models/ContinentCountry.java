@@ -1,4 +1,4 @@
-package com.harri.task2;
+package com.harri.task2.models;
 
 public class ContinentCountry {
     private String country;
