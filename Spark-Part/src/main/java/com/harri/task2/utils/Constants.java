@@ -3,6 +3,7 @@ package com.harri.task2.utils;
 public class Constants {
     public static final String PLAYERS_PATH = "D:/Harri/Training1/Java Spark Train/FIFA-System/Spark-Part/src/main/resources/data/players.csv";
     public static final String UPDATED_PLAYERS_PATH = "D:/Harri/Training1/Java Spark Train/FIFA-System/Spark-Part/src/main/resources/data/updatedSalary.csv";
+//    private static final String BASE_URL = "https://fifa-players-f3c3763af6a2.herokuapp.com";
     private static final String BASE_URL = "http://localhost:8080";
     public static final String CONTINENTS_API_URL = BASE_URL + "/continents";
     private static final String LOCAL_OUTPUT_PATH = "D:/Harri/Training1/Java Spark Train/FIFA-System/Spark-Part/src/main/resources/outputs";

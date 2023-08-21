@@ -23,7 +23,8 @@ public class PreProcessing {
                     else
                         return Double.parseDouble(numericPart);
                 },
-                DataTypes.DoubleType);
+                DataTypes.DoubleType
+        );
 
 
         getSession().udf().register("convertToEnglishUDF", (String input) -> convertToEnglish(input), DataTypes.StringType);

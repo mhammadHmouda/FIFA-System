@@ -21,8 +21,8 @@ public class Main {
         Dataset<Row> continentCountries = PlayersUtils.loadContinentsFromApi(playersDS);
 
 
-        Dataset<Row> allInfoDS = continentCountries.join(playersDS,
-                continentCountries.col("Country").equalTo(playersDS.col("Nationality"))).drop("Nationality");
+        Dataset<Row> allInfoDS = playersDS.join(continentCountries,
+                playersDS.col("Nationality").equalTo(continentCountries.col("Country"))).drop("Nationality");
 
         allInfoDS = allInfoDS.persist(StorageLevel.MEMORY_AND_DISK());
 
@@ -72,12 +72,11 @@ public class Main {
         //3- Which of Europe or America has the best FIFA players?
         HiveQuery.bestContinents().show();
 
+        allInfoDS.unpersist();
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Finished");
         scanner.nextLine();
-
-        allInfoDS.unpersist();
 
         getSession().stop();
     }

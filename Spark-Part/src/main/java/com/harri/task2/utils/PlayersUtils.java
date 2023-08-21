@@ -82,18 +82,14 @@ public class PlayersUtils {
                 .save(UPDATED_DOCUMENT_LOCAL_PATH);
 
         Dataset<Row> updatedPlayersOnly = newPlayersDocument
-                .filter("Salary != UpdatedSalary")
-                .drop("Salary")
+                .filter("Salary != UpdatedSalary").drop("Salary")
                 .withColumnRenamed("UpdatedSalary", "Salary");
 
         updatedPlayersOnly.show();
 
-        updatedPlayersOnly.write()
-                .option("header", true)
-                .mode(SaveMode.Overwrite)
-                .format("csv")
-                .save(UPDATED_PLAYERS_LOCAL_PATH);
+        updatedPlayersOnly
+                .write().option("header", true).mode(SaveMode.Overwrite)
+                .format("csv").save(UPDATED_PLAYERS_LOCAL_PATH);
 //                .save(UPDATED_PLAYERS_S3_PATH);
-
     }
 }
